@@ -1,0 +1,6 @@
+board:
+  name: paperone
+  full_name: HSW Paperone
+  vendor: hsw
+  socs:
+    - name: stm32f413xx
