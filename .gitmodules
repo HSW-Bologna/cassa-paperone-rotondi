@@ -1,0 +1,6 @@
+[submodule "lib/liblightmodbus"]
+	path = lib/liblightmodbus
+	url = https://github.com/Jacajack/liblightmodbus.git
+[submodule "lib/mfrc522"]
+	path = lib/mfrc522
+	url = https://github.com/libdriver/mfrc522.git
