@@ -4,7 +4,10 @@
 #include <zephyr/logging/log.h>
 #include "bsp/heartbit.h"
 #include "bsp/rs232_client.h"
+#include "bsp/uart_mdb.h"
+#include "bsp/uart_cctalk.h"
 #include "bsp/digital_coin_reader.h"
+#include "bsp/mfrc522/mfrc522.h"
 #include "controller/controller.h"
 
 
@@ -15,6 +18,9 @@ int main(void) {
     bsp_heartbit_init();
     bsp_rs232_client_init();
     bsp_digital_coin_reader_init();
+    bsp_mfrc522_init();
+    bsp_uart_mdb_init();
+    bsp_uart_cctalk_init();
 
     controller_init();
 

@@ -37,6 +37,14 @@
 		};
         };
 
+        spi_nss_lines {
+            compatible = "gpio-leds";
+            mfrc522_chip_select: CS3 {
+                gpios = <&gpiod 10 GPIO_ACTIVE_HIGH>;
+                label = "MFRC522 CS";
+            };
+        };
+
         digital_readers_input_lines {
             compatible = "gpio-keys";
             coin_reader_line_1: P_G1 {
@@ -78,16 +86,31 @@
 };
 
 &usart1 {
-	pinctrl-0 = <&usart1_tx_pa9 &usart1_rx_pa10>;
-	pinctrl-names = "default";
-	current-speed = <115200>;
-	status = "okay";
+    pinctrl-0 = <&usart1_tx_pa9 &usart1_rx_pa10>;
+    pinctrl-names = "default";
+    current-speed = <115200>;
+    status = "okay";
+};
+
+uart_mdb: &usart3 {
+    pinctrl-0 = <&usart3_tx_pc10 &usart3_rx_pc11>;
+    pinctrl-names = "default";
+    current-speed = <9600>;
+    data-bits = <9>;
+    status = "okay";
 };
 
 uart_rs232_client: &uart8 {
 	pinctrl-0 = <&uart8_tx_pe1 &uart8_rx_pe0>;
 	pinctrl-names = "default";
 	current-speed = <230400>;
+	status = "okay";
+};
+
+uart_cctalk: &uart9 {
+	pinctrl-0 = <&uart9_tx_pd15 &uart8_rx_pd14>;
+	pinctrl-names = "default";
+	current-speed = <9600>;
 	status = "okay";
 };
 
@@ -112,14 +135,13 @@ uart_rs232_client: &uart8 {
 	clock-frequency = <I2C_BITRATE_FAST>;
 	status = "okay";
 };
+*/
 
-&spi3 {
-	pinctrl-0 = <&spi3_nss_pa15 &spi3_sck_pb12
-		     &spi3_miso_pb4 &spi3_mosi_pb5>;
+mfrc522_spi: &spi3 {
+	pinctrl-0 = <&spi3_sck_pb3 &spi3_miso_pb4 &spi3_mosi_pb5>;
 	pinctrl-names = "default";
 	status = "okay";
 };
-*/
 
 &rtc {
 	clocks = <&rcc STM32_CLOCK_BUS_APB1 0x10000000>,

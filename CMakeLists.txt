@@ -8,7 +8,8 @@ project(${PROJECT_NAME})
 set(SOURCE_DIR "${PROJECT_SOURCE_DIR}/src")
 set(LIB_DIR "${PROJECT_SOURCE_DIR}/lib")
 
-FILE(GLOB SOURCES "${SOURCE_DIR}/*.c" "${SOURCE_DIR}/bsp/*.c" "${SOURCE_DIR}/adapters/*.c" "${SOURCE_DIR}/controller/*c" "${SOURCE_DIR}/model/*.c" "${LIB_DIR}/mfrc522/src/*.c")
+FILE(GLOB SOURCES "${SOURCE_DIR}/*.c" "${SOURCE_DIR}/bsp/*.c" "${SOURCE_DIR}/bsp/mfrc522/*.c" "${SOURCE_DIR}/adapters/*.c" "${SOURCE_DIR}/controller/*c" "${SOURCE_DIR}/model/*.c" 
+    "${LIB_DIR}/mfrc522/src/*.c" "${LIB_DIR}/mdb/src/*.c" "${LIB_DIR}/mdb/src/devices/*.c")
 
-target_include_directories(app PRIVATE ${SOURCE_DIR} "${LIB_DIR}/liblightmodbus/include" "${LIB_DIR}/mfrc522/src/")
+target_include_directories(app PRIVATE ${SOURCE_DIR} "${LIB_DIR}/liblightmodbus/include" "${LIB_DIR}/mfrc522/src/" "${LIB_DIR}/mdb/src/")
 target_sources(app PRIVATE ${SOURCES})
